@@ -16,26 +16,26 @@ namespace DotnetPractice.Repository
             _dbo = dbContext;
         }
 
-        public Task AddUser(User data)
+        public async Task AddUser(User data)
         {
             _dbo.Users.Add(data);
-            return _dbo.SaveChangesAsync();
+            await _dbo.SaveChangesAsync();
         }
 
-        public Task<List<User>> GetAllUsers()
+        public async Task<List<User>> GetAllUsers()
         {
-            return _dbo.Users.ToListAsync();
+            return await _dbo.Users.ToListAsync();
         }
 
-        public Task<User> GetUserByGUID(string guid)
+        public async Task<User> GetUserByGUID(string guid)
         {
-            return _dbo.Users.Where(u => u.GUID == guid).FirstAsync();
+            return await _dbo.Users.Where(u => u.GUID == guid).FirstAsync();
         }
 
-        public Task EditUser(User data)
+        public async Task EditUser(User data)
         {
             _dbo.Users.Update(data);
-            return _dbo.SaveChangesAsync();
+            await _dbo.SaveChangesAsync();
         }
     }
 }
