@@ -9,6 +9,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<UserDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("UserDB"))
 );
+builder.Services.AddScoped<UserRepository>();
 
 var app = builder.Build();
 
