@@ -10,9 +10,9 @@ namespace DotnetPractice.Models.DTOs
         public bool Status { get; set; }
         public T Data { get; set; } = default!;
 
-        public ApiResponse(T data)
+        public ApiResponse(bool status, T data)
         {
-            Status = true;
+            Status = status;
             Data = data;
         }
     }
