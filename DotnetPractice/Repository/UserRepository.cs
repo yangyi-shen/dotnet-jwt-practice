@@ -27,7 +27,7 @@ namespace DotnetPractice.Repository
             return await _dbo.Users.ToListAsync();
         }
 
-        public async Task<User?> GetUserByGUID(string GUID)
+        public async Task<User?> GetUserByGUID(Guid GUID)
         {
             return await _dbo.Users.Where(u => u.GUID == GUID).FirstOrDefaultAsync();
         }
