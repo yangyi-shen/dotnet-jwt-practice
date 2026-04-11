@@ -27,7 +27,7 @@ namespace DotnetPractice.Services
             User? user = await _repository.GetUserByPassword(password);
             if (user == null)
             {
-                throw new DotnetPracticeException(DotnetPracticeExceptionCodes.USER_NOT_FOUND);
+                throw new ApiException(ApiExceptionCodes.USER_NOT_FOUND);
             }
 
             LoginResponseDTO responseContent = new(user);

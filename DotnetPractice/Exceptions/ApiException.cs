@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace DotnetPractice.Exceptions
 {
-    public class DotnetPracticeException : Exception
+    public class ApiException : Exception
     {
-        public DotnetPracticeExceptionCode Code { get; }
+        public ApiExceptionCode Code { get; }
 
-        public DotnetPracticeException(DotnetPracticeExceptionCode code)
+        public ApiException(ApiExceptionCode code)
             : base(code.Message)
         {
             Code = code;

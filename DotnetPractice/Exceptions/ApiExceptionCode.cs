@@ -5,5 +5,5 @@ using System.Threading.Tasks;
 
 namespace DotnetPractice.Exceptions
 {
-    public record DotnetPracticeExceptionCode(int Code, string Message);
+    public record ApiExceptionCode(int Code, string Message);
 }
