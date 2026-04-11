@@ -32,9 +32,9 @@ namespace DotnetPractice.Repository
             return await _dbo.Users.Where(u => u.GUID == GUID).FirstOrDefaultAsync();
         }
 
-        public async Task<User?> GetUserByPassword(string password)
+        public async Task<User?> GetUserByUserName(string userName)
         {
-            return await _dbo.Users.Where(u => u.Password == password).FirstOrDefaultAsync();
+            return await _dbo.Users.Where(u => u.UserName == userName).FirstOrDefaultAsync();
         }
 
         public async Task EditUser(User data)
