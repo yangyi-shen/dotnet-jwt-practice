@@ -7,12 +7,12 @@ namespace DotnetPractice.Exceptions
 {
     public class ApiException : Exception
     {
-        public ApiExceptionCode Code { get; }
+        public ApiExceptionDetails Details { get; }
 
-        public ApiException(ApiExceptionCode code)
-            : base(code.Message)
+        public ApiException(ApiExceptionDetails details)
+            : base(details.Message)
         {
-            Code = code;
+            Details = details;
         }
     }
 }
