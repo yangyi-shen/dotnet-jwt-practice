@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DotnetPractice.Models.Responses
 {
-    public class LoginResponseDTO : User
+    public class UserDataDTO : User
     {
         [SetsRequiredMembers]
-        public LoginResponseDTO(User user)
+        public UserDataDTO(User user)
         {
             GUID = user.GUID;
             UserName = user.UserName;

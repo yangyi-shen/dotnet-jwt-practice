@@ -20,7 +20,7 @@ namespace DotnetPractice.Services
             _repository = repository;
         }
 
-        public async Task<ApiResponse<LoginResponseDTO>> LoginUser(LoginRequest request)
+        public async Task<ApiResponse<UserDataDTO>> LoginUser(LoginRequest request)
         {
             string userName = request.UserName;
 
@@ -30,8 +30,8 @@ namespace DotnetPractice.Services
                 throw new ApiException(ApiExceptions.USER_NOT_FOUND);
             }
 
-            LoginResponseDTO responseContent = new(user);
-            ApiResponse<LoginResponseDTO> response = new(true, responseContent);
+            UserDataDTO responseContent = new(user);
+            ApiResponse<UserDataDTO> response = new(true, responseContent);
 
             return response;
         }
