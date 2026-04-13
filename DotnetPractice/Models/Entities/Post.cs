@@ -12,16 +12,16 @@ namespace DotnetPractice.Models.Entities
         public Guid GUID { get; set; }
         public Guid UserGUID { get; set; }
         public Guid CategoryGUID { get; set; }
-        public string Text { get; set; }
+        public string PostText { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public Post(Guid userGUID, Guid categoryGUID, string text)
+        public Post(Guid userGUID, Guid categoryGUID, string postText)
         {
             GUID = Guid.NewGuid();
             UserGUID = userGUID;
             CategoryGUID = categoryGUID;
-            Text = text;
+            PostText = postText;
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
         }
