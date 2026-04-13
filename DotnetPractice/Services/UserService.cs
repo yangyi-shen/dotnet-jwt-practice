@@ -24,7 +24,6 @@ namespace DotnetPractice.Services
         public async Task<ApiResponse<User>> RegisterUser(RegisterRequest request)
         {
             string userName = request.UserName;
-
             if (!_utils.ValidateUserName(userName))
             {
                 throw new ApiException(ApiExceptions.USER_INVALID);
