@@ -6,6 +6,10 @@ namespace DotnetPractice.Exceptions
             0000,
             "An unexpected error occurred"
         );
+        public static readonly ApiExceptionDetails PARAMETERS_INVALID = new(
+            0001,
+            "Parameters are invalid"
+        );
         public static readonly ApiExceptionDetails USER_ALREADY_EXISTS = new(
             1001,
             "User already exists"
