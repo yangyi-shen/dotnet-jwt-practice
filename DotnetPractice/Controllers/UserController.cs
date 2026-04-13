@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DotnetPractice.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public class UserController : ControllerBase
     {
         private readonly UserService _service;
