@@ -14,6 +14,8 @@ builder.Services.AddDbContext<ContentDBContext>(options =>
 
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<CategoryRepository>();
+builder.Services.AddScoped<CategoryService>();
 builder.Services.AddControllers();
 
 builder.Services.AddExceptionHandler<ExceptionHandler>();
