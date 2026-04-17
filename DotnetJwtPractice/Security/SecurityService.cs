@@ -19,7 +19,7 @@ namespace DotnetJwtPractice.Security
             _config = config;
         }
 
-        public string GenerateJwt(Guid userGUID, AuthorizationRole[] roles)
+        public string GenerateJwt(Guid userGUID, AuthorizationRole role)
         {
             if (userGUID == Guid.Empty)
             {
@@ -38,7 +38,7 @@ namespace DotnetJwtPractice.Security
             claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.Iss, issuer));
             claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.Aud, audience));
             claimsIdentity.AddClaim(new Claim(JwtRegisteredClaimNames.Sub, userGUID.ToString()));
-            claimsIdentity.AddClaim(new Claim("roles", string.Join(",", roles)));
+            claimsIdentity.AddClaim(new Claim("rol", role.ToString()));
 
             SecurityTokenDescriptor descriptor = new()
             {
