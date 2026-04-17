@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DotnetPractice.Models.DTOs;
+using DotnetJwtPractice.Models.DTOs;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace DotnetPractice.Exceptions
+namespace DotnetJwtPractice.Exceptions
 {
     public class ExceptionHandler : IExceptionHandler
     {

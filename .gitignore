@@ -1,6 +1,6 @@
 # Build
-DotnetPractice/bin/
-DotnetPractice/obj/
+DotnetJwtPractice/bin/
+DotnetJwtPractice/obj/
 
 # User-specific files
 *.user
@@ -15,5 +15,5 @@ DotnetPractice/obj/
 .vscode/
 
 # Local development settings
-DotnetPractice/Properties/launchSettings.json
-DotnetPractice/appsettings.Development.json
+DotnetJwtPractice/Properties/launchSettings.json
+DotnetJwtPractice/appsettings.Development.json

@@ -1,6 +1,6 @@
-@DotnetPractice_HostAddress = http://localhost:5160
+@DotnetJwtPractice_HostAddress = http://localhost:5160
 
-GET {{DotnetPractice_HostAddress}}/weatherforecast/
+GET {{DotnetJwtPractice_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###

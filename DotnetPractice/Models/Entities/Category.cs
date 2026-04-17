@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotnetPractice.Models.Entities
+namespace DotnetJwtPractice.Models.Entities
 {
     public class Category
     {

@@ -1,7 +1,8 @@
-using DotnetPractice.Exceptions;
-using DotnetPractice.Repository;
-using DotnetPractice.Services;
+using DotnetJwtPractice.Exceptions;
+using DotnetJwtPractice.Repository;
+using DotnetJwtPractice.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 

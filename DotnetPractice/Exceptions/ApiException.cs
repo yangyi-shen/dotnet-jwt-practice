@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotnetPractice.Exceptions
+namespace DotnetJwtPractice.Exceptions
 {
     public class ApiException : Exception
     {

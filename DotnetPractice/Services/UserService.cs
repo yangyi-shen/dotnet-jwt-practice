@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DotnetPractice.Exceptions;
-using DotnetPractice.Models;
-using DotnetPractice.Models.DTOs;
-using DotnetPractice.Models.Requests;
-using DotnetPractice.Repository;
-using DotnetPractice.Utils;
+using DotnetJwtPractice.Exceptions;
+using DotnetJwtPractice.Models;
+using DotnetJwtPractice.Models.DTOs;
+using DotnetJwtPractice.Models.Requests;
+using DotnetJwtPractice.Repository;
+using DotnetJwtPractice.Utils;
 
-namespace DotnetPractice.Services
+namespace DotnetJwtPractice.Services
 {
     public class UserService
     {

@@ -1,4 +1,4 @@
-namespace DotnetPractice.Exceptions
+namespace DotnetJwtPractice.Exceptions
 {
     public static class ApiExceptions
     {

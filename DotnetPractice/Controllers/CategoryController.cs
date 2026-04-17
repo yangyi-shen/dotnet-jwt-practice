@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DotnetPractice.Models.DTOs;
-using DotnetPractice.Models.Entities;
-using DotnetPractice.Models.Requests;
-using DotnetPractice.Services;
+using DotnetJwtPractice.Models.DTOs;
+using DotnetJwtPractice.Models.Entities;
+using DotnetJwtPractice.Models.Requests;
+using DotnetJwtPractice.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DotnetPractice.Controllers
+namespace DotnetJwtPractice.Controllers
 {
     [ApiController]
     [Route("api/categories")]

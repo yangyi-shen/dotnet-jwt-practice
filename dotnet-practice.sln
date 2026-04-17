@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetPractice", "DotnetPractice\DotnetPractice.csproj", "{8606F9F9-7A4C-95F4-F9B4-4348016A822A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetJwtPractice", "DotnetJwtPractice\DotnetJwtPractice.csproj", "{8606F9F9-7A4C-95F4-F9B4-4348016A822A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DotnetPractice.Models.Requests
+namespace DotnetJwtPractice.Models.Requests
 {
     public class GetFilteredPostsRequest
     {
