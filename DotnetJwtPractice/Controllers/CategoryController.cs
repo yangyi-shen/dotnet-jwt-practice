@@ -6,10 +6,12 @@ using DotnetJwtPractice.Models.DTOs;
 using DotnetJwtPractice.Models.Entities;
 using DotnetJwtPractice.Models.Requests;
 using DotnetJwtPractice.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetJwtPractice.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/categories")]
     public class CategoryController : ControllerBase
