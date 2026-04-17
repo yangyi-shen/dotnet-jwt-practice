@@ -25,6 +25,13 @@ builder.Services.AddExceptionHandler<ExceptionHandler>();
 builder.Services.AddProblemDetails();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder
+    .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(jwtOptions =>
+    {
+        jwtOptions.Authority = "https://{--your-authority--}";
+        jwtOptions.Audience = "https://{--your-audience--}";
+    });
 
 var app = builder.Build();
 
