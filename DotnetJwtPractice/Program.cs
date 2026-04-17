@@ -29,6 +29,7 @@ builder
     .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(jwtOptions =>
     {
+        jwtOptions.RequireHttpsMetadata = false;
         jwtOptions.Authority = "dotnet-jwt-practice";
         jwtOptions.Audience = "dotnet-jwt-practice";
     });
