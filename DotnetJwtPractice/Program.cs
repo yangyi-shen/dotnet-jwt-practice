@@ -1,8 +1,11 @@
+using System.Text;
 using DotnetJwtPractice.Exceptions;
 using DotnetJwtPractice.Repository;
+using DotnetJwtPractice.Security;
 using DotnetJwtPractice.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +23,7 @@ builder.Services.AddScoped<CategoryRepository>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<PostRepository>();
 builder.Services.AddScoped<PostService>();
+builder.Services.AddScoped<SecurityService>();
 builder.Services.AddControllers();
 
 builder.Services.AddExceptionHandler<ExceptionHandler>();
@@ -47,8 +51,20 @@ builder
     .AddJwtBearer(jwtOptions =>
     {
         jwtOptions.RequireHttpsMetadata = false;
-        jwtOptions.Authority = "dotnet-jwt-practice";
-        jwtOptions.Audience = "dotnet-jwt-practice";
+        jwtOptions.TokenValidationParameters = new()
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+
+            ValidIssuer = builder.Configuration.GetValue<string>("Jwt:Issuer"),
+            ValidAudience = builder.Configuration.GetValue<string>("Jwt:Audience"),
+
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("Jwt:SecretKey")!)
+            ),
+        };
     });
 
 var app = builder.Build();
