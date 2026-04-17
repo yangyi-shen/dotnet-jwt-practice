@@ -7,6 +7,7 @@ using DotnetJwtPractice.Models;
 using DotnetJwtPractice.Models.DTOs;
 using DotnetJwtPractice.Models.Requests;
 using DotnetJwtPractice.Repository;
+using DotnetJwtPractice.Security;
 using DotnetJwtPractice.Utils;
 
 namespace DotnetJwtPractice.Services

@@ -6,21 +6,13 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using DotnetJwtPractice.Exceptions;
+using DotnetJwtPractice.Security;
 using Microsoft.IdentityModel.Tokens;
 
 namespace DotnetJwtPractice.Utils
 {
-    public enum AuthorizationRoles
-    {
-        Admin,
-        User,
-    }
-
     public class JwtUtils
     {
-        public static readonly string JWT_SECRET = "bảo-mật-jwt-cần-phải-dài-hơn-32-chử";
-        public static readonly int JWT_EXPIRE_HOURS = 12;
-
         public string GenerateJwt(Guid userGUID, AuthorizationRoles[] roles)
         {
             if (userGUID == Guid.Empty)
@@ -33,7 +25,7 @@ namespace DotnetJwtPractice.Utils
             string audience = "dotnet-jwt-practice";
 
             JwtSecurityTokenHandler handler = new();
-            byte[] key = Encoding.ASCII.GetBytes(JWT_SECRET);
+            byte[] key = Encoding.ASCII.GetBytes(SecurityConfig.JWT_SECRET);
 
             ClaimsIdentity claimsIdentity = new();
 
@@ -45,7 +37,7 @@ namespace DotnetJwtPractice.Utils
             SecurityTokenDescriptor descriptor = new()
             {
                 Subject = claimsIdentity,
-                Expires = DateTime.UtcNow.AddHours(JWT_EXPIRE_HOURS),
+                Expires = DateTime.UtcNow.AddHours(SecurityConfig.JWT_EXPIRE_HOURS),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature
