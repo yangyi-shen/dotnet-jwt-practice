@@ -1,6 +1,7 @@
 using DotnetJwtPractice.Exceptions;
 using DotnetJwtPractice.Repository;
 using DotnetJwtPractice.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 
