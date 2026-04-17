@@ -21,7 +21,7 @@ namespace DotnetJwtPractice.Utils
         public static readonly string JWT_SECRET = "bảo-mật-jwt-cần-phải-dài-hơn-32-chử";
         public static readonly int JWT_EXPIRE_HOURS = 12;
 
-        public static string GenerateJwt(Guid userGUID, AuthorizationRoles[] roles)
+        public string GenerateJwt(Guid userGUID, AuthorizationRoles[] roles)
         {
             if (userGUID == Guid.Empty)
             {
