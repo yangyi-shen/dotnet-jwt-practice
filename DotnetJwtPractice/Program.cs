@@ -29,8 +29,8 @@ builder
     .Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(jwtOptions =>
     {
-        jwtOptions.Authority = "https://localhost:5000";
-        jwtOptions.Audience = "https://localhost:5000";
+        jwtOptions.Authority = "dotnet-jwt-practice";
+        jwtOptions.Audience = "dotnet-jwt-practice";
     });
 
 var app = builder.Build();
