@@ -40,7 +40,10 @@ namespace DotnetJwtPractice.Services
             User newUser = new(userName);
             await _repository.AddUser(newUser);
 
-            string jwt = _jwtUtils.GenerateJwt(newUser.GUID, [AuthorizationRoles.User]);
+            AuthorizationRole[] roles = newUser.IsAdmin
+                ? [AuthorizationRole.User, AuthorizationRole.Admin]
+                : [AuthorizationRole.User];
+            string jwt = _jwtUtils.GenerateJwt(newUser.GUID, roles);
 
             UserAuthorizationDTO DTO = new(newUser, jwt);
             ApiResponse<UserAuthorizationDTO> response = new(true, DTO);
@@ -63,7 +66,10 @@ namespace DotnetJwtPractice.Services
                 throw new ApiException(ApiExceptions.USER_NOT_FOUND);
             }
 
-            string jwt = _jwtUtils.GenerateJwt(user.GUID, new[] { AuthorizationRoles.User });
+            AuthorizationRole[] roles = user.IsAdmin
+                ? [AuthorizationRole.User, AuthorizationRole.Admin]
+                : [AuthorizationRole.User];
+            string jwt = _jwtUtils.GenerateJwt(user.GUID, roles);
 
             UserAuthorizationDTO DTO = new(user, jwt);
             ApiResponse<UserAuthorizationDTO> response = new(true, DTO);
