@@ -6,13 +6,19 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using DotnetJwtPractice.Exceptions;
-using DotnetJwtPractice.Security;
 using Microsoft.IdentityModel.Tokens;
 
-namespace DotnetJwtPractice.Utils
+namespace DotnetJwtPractice.Security
 {
-    public class JwtUtils
+    public class SecurityService
     {
+        private readonly IConfiguration _config;
+
+        public SecurityService(IConfiguration config)
+        {
+            _config = config;
+        }
+
         public string GenerateJwt(Guid userGUID, AuthorizationRole[] roles)
         {
             if (userGUID == Guid.Empty)
@@ -21,11 +27,11 @@ namespace DotnetJwtPractice.Utils
             }
 
             // không định từ tập tin tách ra vì chỉ cho mục đích thử nghiệm nội bộ thôi
-            string issuer = "dotnet-jwt-practice";
-            string audience = "dotnet-jwt-practice";
+            string issuer = _config.GetValue<string>("Jwt:Issuer")!;
+            string audience = _config.GetValue<string>("Jwt:Audience")!;
 
             JwtSecurityTokenHandler handler = new();
-            byte[] key = Encoding.ASCII.GetBytes(SecurityConfig.JWT_SECRET);
+            byte[] key = Encoding.UTF8.GetBytes(_config.GetValue<string>("Jwt:SecretKey")!);
 
             ClaimsIdentity claimsIdentity = new();
 
@@ -37,7 +43,7 @@ namespace DotnetJwtPractice.Utils
             SecurityTokenDescriptor descriptor = new()
             {
                 Subject = claimsIdentity,
-                Expires = DateTime.UtcNow.AddHours(SecurityConfig.JWT_EXPIRE_HOURS),
+                Expires = DateTime.UtcNow.AddHours(_config.GetValue<int>("Jwt:ExpireHours")),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature

@@ -15,12 +15,13 @@ namespace DotnetJwtPractice.Services
     public class UserService
     {
         private readonly UserUtils _utils = new();
-        private readonly JwtUtils _jwtUtils = new();
+        private readonly SecurityService _securityService;
         private readonly UserRepository _repository;
 
-        public UserService(UserRepository repository)
+        public UserService(UserRepository repository, SecurityService securityService)
         {
             _repository = repository;
+            _securityService = securityService;
         }
 
         public async Task<ApiResponse<UserAuthorizationDTO>> RegisterUser(RegisterRequest request)
@@ -43,7 +44,7 @@ namespace DotnetJwtPractice.Services
             AuthorizationRole[] roles = newUser.IsAdmin
                 ? [AuthorizationRole.User, AuthorizationRole.Admin]
                 : [AuthorizationRole.User];
-            string jwt = _jwtUtils.GenerateJwt(newUser.GUID, roles);
+            string jwt = _securityService.GenerateJwt(newUser.GUID, roles);
 
             UserAuthorizationDTO DTO = new(newUser, jwt);
             ApiResponse<UserAuthorizationDTO> response = new(true, DTO);
@@ -69,7 +70,7 @@ namespace DotnetJwtPractice.Services
             AuthorizationRole[] roles = user.IsAdmin
                 ? [AuthorizationRole.User, AuthorizationRole.Admin]
                 : [AuthorizationRole.User];
-            string jwt = _jwtUtils.GenerateJwt(user.GUID, roles);
+            string jwt = _securityService.GenerateJwt(user.GUID, roles);
 
             UserAuthorizationDTO DTO = new(user, jwt);
             ApiResponse<UserAuthorizationDTO> response = new(true, DTO);
