@@ -22,16 +22,20 @@ namespace DotnetJwtPractice.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<ApiResponse<User>>> RegisterUser(RegisterRequest request)
+        public async Task<ActionResult<ApiResponse<UserAuthorizationDTO>>> RegisterUser(
+            RegisterRequest request
+        )
         {
-            ApiResponse<User> response = await _service.RegisterUser(request);
+            ApiResponse<UserAuthorizationDTO> response = await _service.RegisterUser(request);
             return Ok(response);
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<ApiResponse<User>>> LoginUser(LoginRequest request)
+        public async Task<ActionResult<ApiResponse<UserAuthorizationDTO>>> LoginUser(
+            LoginRequest request
+        )
         {
-            ApiResponse<User> response = await _service.LoginUser(request);
+            ApiResponse<UserAuthorizationDTO> response = await _service.LoginUser(request);
             return Ok(response);
         }
     }

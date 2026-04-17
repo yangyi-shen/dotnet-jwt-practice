@@ -14,6 +14,7 @@ namespace DotnetJwtPractice.Services
     public class UserService
     {
         private readonly UserUtils _utils = new();
+        private readonly JwtUtils _jwtUtils = new();
         private readonly UserRepository _repository;
 
         public UserService(UserRepository repository)
@@ -21,7 +22,7 @@ namespace DotnetJwtPractice.Services
             _repository = repository;
         }
 
-        public async Task<ApiResponse<User>> RegisterUser(RegisterRequest request)
+        public async Task<ApiResponse<UserAuthorizationDTO>> RegisterUser(RegisterRequest request)
         {
             string userName = request.UserName;
             if (!_utils.ValidateUserName(userName))
@@ -38,12 +39,15 @@ namespace DotnetJwtPractice.Services
             User newUser = new(userName);
             await _repository.AddUser(newUser);
 
-            ApiResponse<User> response = new(true, newUser);
+            string jwt = _jwtUtils.GenerateJwt(newUser.GUID, [AuthorizationRoles.User]);
+
+            UserAuthorizationDTO DTO = new(newUser, jwt);
+            ApiResponse<UserAuthorizationDTO> response = new(true, DTO);
 
             return response;
         }
 
-        public async Task<ApiResponse<User>> LoginUser(LoginRequest request)
+        public async Task<ApiResponse<UserAuthorizationDTO>> LoginUser(LoginRequest request)
         {
             string userName = request.UserName;
 
@@ -58,7 +62,10 @@ namespace DotnetJwtPractice.Services
                 throw new ApiException(ApiExceptions.USER_NOT_FOUND);
             }
 
-            ApiResponse<User> response = new(true, user);
+            string jwt = _jwtUtils.GenerateJwt(user.GUID, new[] { AuthorizationRoles.User });
+
+            UserAuthorizationDTO DTO = new(user, jwt);
+            ApiResponse<UserAuthorizationDTO> response = new(true, DTO);
 
             return response;
         }
