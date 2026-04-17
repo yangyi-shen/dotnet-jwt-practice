@@ -1,6 +1,6 @@
 namespace DotnetJwtPractice.Security
 {
-    public enum AuthorizationRoles
+    public enum AuthorizationRole
     {
         Admin,
         User,

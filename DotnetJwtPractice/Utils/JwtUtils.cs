@@ -13,7 +13,7 @@ namespace DotnetJwtPractice.Utils
 {
     public class JwtUtils
     {
-        public string GenerateJwt(Guid userGUID, AuthorizationRoles[] roles)
+        public string GenerateJwt(Guid userGUID, AuthorizationRole[] roles)
         {
             if (userGUID == Guid.Empty)
             {
