@@ -10,6 +10,11 @@ namespace DotnetJwtPractice.Exceptions
             0001,
             "Parameters are invalid"
         );
+        public static readonly ApiExceptionDetails JWT_USER_GUID_REQUIRED = new(
+            0002,
+            "User GUID must be provided to generate JWT"
+        );
+        public static readonly ApiExceptionDetails JWT_INVALID = new(0003, "JWT is invalid");
         public static readonly ApiExceptionDetails USER_ALREADY_EXISTS = new(
             1001,
             "User already exists"
