@@ -2,6 +2,8 @@
 
 Một Git repository được tạo cho mục đích học cách xây dụng hệ thống xác nhận dùng JWT.
 
+[🔗 Liên kết](https://github.com/yangyi-shen/dotnet-practice) đến repository nguyên bản dotnet-practice
+
 ## todo-list:
 
 Mình kế hoạc trong ko mã phần mềm này thực thi những chức năng được liết bên dưới (thêm trên những chức năng đã tồn tại trong ứng dụng dotnet-practice nguyên bản):
