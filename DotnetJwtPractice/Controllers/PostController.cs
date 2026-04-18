@@ -11,9 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetJwtPractice.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/posts")]
+    [Authorize]
     public class PostController : ControllerBase
     {
         private readonly PostService _service;

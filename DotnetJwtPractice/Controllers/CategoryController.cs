@@ -11,9 +11,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetJwtPractice.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/categories")]
+    // chính sách mặc định cho controller này thôi, chứ có vài endpoint sẽ chỉ cho Admin gọi
+    [Authorize]
     public class CategoryController : ControllerBase
     {
         private readonly CategoryService _service;
@@ -31,6 +32,7 @@ namespace DotnetJwtPractice.Controllers
         }
 
         [HttpPost("add")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ApiResponse<Category>>> AddCategory(
             AddCategoryRequest request
         )
