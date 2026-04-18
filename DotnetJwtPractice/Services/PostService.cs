@@ -50,13 +50,13 @@ namespace DotnetJwtPractice.Services
             return new ApiResponse<List<Post>>(true, data);
         }
 
-        public async Task<ApiResponse<Post>> AddPost(AddPostRequest request)
+        public async Task<ApiResponse<Post>> AddPost(string userId, AddPostRequest request)
         {
             Guid userGUID;
             Guid categoryGUID;
             try
             {
-                userGUID = Guid.Parse(request.UserGUID);
+                userGUID = Guid.Parse(userId);
                 categoryGUID = Guid.Parse(request.CategoryGUID);
             }
             catch (FormatException)

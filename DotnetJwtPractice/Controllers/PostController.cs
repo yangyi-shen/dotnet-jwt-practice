@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using DotnetJwtPractice.Models.DTOs;
 using DotnetJwtPractice.Models.Entities;
@@ -35,7 +36,13 @@ namespace DotnetJwtPractice.Controllers
         [HttpPost("add")]
         public async Task<ActionResult<ApiResponse<Post>>> AddPost(AddPostRequest request)
         {
-            ApiResponse<Post> response = await _service.AddPost(request);
+            string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized();
+            }
+
+            ApiResponse<Post> response = await _service.AddPost(userId, request);
             return Ok(response);
         }
     }
