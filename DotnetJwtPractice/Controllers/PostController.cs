@@ -24,7 +24,7 @@ namespace DotnetJwtPractice.Controllers
             _service = service;
         }
 
-        [HttpGet("filtered")]
+        [HttpGet]
         public async Task<ActionResult<ApiResponse<List<Post>>>> GetFilteredPosts(
             [FromQuery] GetFilteredPostsRequest request
         )
@@ -33,7 +33,7 @@ namespace DotnetJwtPractice.Controllers
             return Ok(response);
         }
 
-        [HttpPost("add")]
+        [HttpPost]
         public async Task<ActionResult<ApiResponse<Post>>> AddPost(AddPostRequest request)
         {
             string? userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

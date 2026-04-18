@@ -24,14 +24,14 @@ namespace DotnetJwtPractice.Controllers
             _service = service;
         }
 
-        [HttpGet("get-all")]
+        [HttpGet]
         public async Task<ActionResult<ApiResponse<List<Category>>>> GetAllCategories()
         {
             ApiResponse<List<Category>> response = await _service.GetAllCategories();
             return Ok(response);
         }
 
-        [HttpPost("add")]
+        [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<ApiResponse<Category>>> AddCategory(
             AddCategoryRequest request
